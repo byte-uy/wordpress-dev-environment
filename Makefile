@@ -15,7 +15,7 @@ clean:
 	$(MAKE) clean-images
 
 run:
-	docker run -d -p 8080:80 -v ./wp-content:/var/www/html/wp-contnet --name website-container website 
+	docker run -d -p 8080:80 -v ./wp-content:/var/www/html/wp-content --name website-container website 
 	docker exec -ti website-container /bin/bash
 
 stop:
