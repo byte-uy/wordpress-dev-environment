@@ -17,6 +17,9 @@ RUN rm wordpress-6.4.2.tar.gz
 RUN rm -rf wordpress
 RUN rm /var/www/html/index.html
 
+RUN chown -R www-data:www-data /var/www/html/wp-content
+RUN chmod -R 777 /var/www/html/wp-content
+
 RUN apt-get install -y vim
 
 RUN a2enmod rewrite

@@ -1,0 +1,19 @@
+{
+	"name": "pfefferle/wordpress-autonomie",
+	"description": "Pure Zen",
+	"require": {
+		"php": ">=5.6.0",
+		"composer/installers": "~1.0"
+	},
+	"type": "wordpress-theme",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Matthias Pfefferle",
+			"homepage": "https://notiz.blog"
+		}
+	],
+	"extra": {
+		"installer-name": "autonomie"
+	}
+}
