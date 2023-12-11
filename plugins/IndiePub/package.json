@@ -1,7 +1,0 @@
-{
-    "name": "IndiePub",
-    "version": "0.10",
-    "devDependencies": {
-        "grunt": ">=1.3.0"
-    }
-}
