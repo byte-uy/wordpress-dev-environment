@@ -1,19 +1,26 @@
-.PHONY: build clean test
+.PHONY: build clean clean-containers clean-images test stop
 
 build:
 	docker build -t website .
 
-clean:
-	@CONTAINERS=$$(docker ps -a -q); \
-	if [ -n "$$CONTAINERS" ]; then \
-		docker kill $$CONTAINERS; \
-		docker rm $$CONTAINERS; \
-	fi
-	@IMAGES=$$(docker images -q); \
-	if [ -n "$$IMAGES" ]; then \
-		docker rmi $$IMAGES; \
-	fi
+clean-containers:
+	- docker kill $$(docker ps -q)
+	- docker rm $$(docker ps -a -q)
 
-test:
-	docker run -d -p 8080:80 --name website-container website 
+clean-images:
+	- docker rmi $$(docker images -q)
+
+clean:
+	$(MAKE) clean-containers
+	$(MAKE) clean-images
+
+run:
+	docker run -d -p 8080:80 -v ./wp-content:/var/www/html/wp-contnet --name website-container website 
+	docker exec -ti website-container /bin/bash
+
+stop:
+	docker stop website-container
+
+start:
+	docker start website-container
 	docker exec -ti website-container /bin/bash
